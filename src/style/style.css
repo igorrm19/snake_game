@@ -1,3 +1,19 @@
+:root {
+    --primary-color: #eee;
+    --secondary-color: #222;
+    --game-board-bg: #333;
+    --snake-color: #0f0;
+    --food-color: #f00;
+    --border-color: #555;
+    --button-bg-color: #4CAF50;
+    --button-hover-bg-color: #45a049;
+    --text-color-muted: #bbb;
+    --font-primary: 'Press Start 2P', cursive;
+    --font-size-h1: 2.5em;
+    --font-size-score: 1.2em;
+    --font-size-high-score: 0.9em;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -8,8 +24,8 @@ body {
     background-image: url('../../public/6c479787d54fe73436b82e56ed99885e.gif');
     background-position: center;
     background-repeat: repeat;
-    color: #eee;
-    font-family: 'Press Start 2P', cursive;
+    color: var(--primary-color);
+    font-family: var(--font-primary);
 }
 
 .game-header {
@@ -19,16 +35,16 @@ body {
     max-width: 90vw;
     width: 625px; /* Mesma largura do game-board */
     padding: 10px 0;
-    position: absolute;
-    top: 0;
+    margin-bottom: 20px;
 }
 
 .game-header h1 {
-    margin: 0; /* Remove margem padrão do h1 dentro do header */
+    margin: 0;
+    font-size: var(--font-size-h1);
 }
 
 #score-display {
-    font-size: 1.2em;
+    font-size: var(--font-size-score);
     margin: 0;
 }
 
@@ -41,11 +57,11 @@ body {
 }
 
 #mute-button svg {
-    fill: white; 
+    fill: var(--primary-color);
 }
 
 #mute-button:hover svg {
-    fill: #ccc; 
+    fill: var(--text-color-muted);
 }
 
 #game-board {
@@ -56,15 +72,122 @@ body {
     max-height: 90vh;
     width: min(625px, 90vw); /* Ajusta a largura com base na viewport */
     height: min(625px, 90vh); /* Ajusta a altura com base na viewport */
-    background-color: #333;
-    border: 5px solid #555;
+    background-color: var(--game-board-bg);
+    border: 5px solid var(--border-color);
 }
 
 .snake {
-    background-color: #0f0;
+    background-color: var(--snake-color);
 }
 
 .food {
-    background-color: #f00;
+    background-color: var(--food-color);
+}
+
+.game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-button {
+    background-color: var(--button-bg-color);
+    border: none;
+    color: var(--primary-color);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* Garante que o botão esteja acima do tabuleiro */
+}
+
+.game-button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.hidden {
+    display: none;
+}
+
+.score-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha os itens à esquerda dentro do score-info */
+}
+
+#high-score-display {
+    font-size: var(--font-size-high-score);
+    margin: 0;
+    color: var(--text-color-muted);
+}
+
+
+/* Media Queries para Responsividade */
+
+/* Telas pequenas (ex: mobile) */
+@media (max-width: 600px) {
+    .game-header {
+        width: 95vw;
+        padding: 5px 0;
+        margin-bottom: 10px;
+    }
+
+    .game-header h1 {
+        font-size: 1.5em;
+    }
+
+    #score-display {
+        font-size: 0.9em;
+    }
+
+    #mute-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    #game-board {
+        width: min(500px, 95vw);
+        height: min(500px, 95vh);
+        border: 3px solid var(--border-color);
+    }
+}
+
+/* Telas médias (ex: tablets) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .game-header {
+        width: 80vw;
+        padding: 8px 0;
+        margin-bottom: 15px;
+    }
+
+    .game-header h1 {
+        font-size: 2em;
+    }
+
+    #score-display {
+        font-size: 1em;
+    }
+
+    #mute-button svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    #game-board {
+        width: min(600px, 85vw);
+        height: min(600px, 85vh);
+        border: 4px solid var(--border-color);
+    }
 }
 

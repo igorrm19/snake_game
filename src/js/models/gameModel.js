@@ -1,12 +1,15 @@
+import { GAME_CONSTANTS } from '../utils/config.js';
+
 export class GameModel {
     constructor(gridSize) {
         this.gridSize = gridSize;
-        this.snake = [{ x: 10, y: 10 }];
+        this.snake = [GAME_CONSTANTS.INITIAL_SNAKE_POSITION];
         this.food = {};
-        this.direction = 'right';
-        this.gameSpeedDelay = 200;
+        this.direction = GAME_CONSTANTS.INITIAL_DIRECTION;
+        this.gameSpeedDelay = GAME_CONSTANTS.GAME_SPEED_DELAY;
         this.gameOver = false;
         this.score = 0;
+        this.highScore = parseInt(localStorage.getItem(GAME_CONSTANTS.HIGH_SCORE_KEY)) || 0;
         this.generateFood();
     }
 
@@ -41,6 +44,10 @@ export class GameModel {
 
         if (head.x === this.food.x && head.y === this.food.y) {
             this.score++;
+            if (this.score > this.highScore) {
+                this.highScore = this.score;
+                localStorage.setItem(GAME_CONSTANTS.HIGH_SCORE_KEY, this.highScore);
+            }
             this.generateFood();
         } else {
             this.snake.pop();
@@ -86,11 +93,12 @@ export class GameModel {
     }
 
     resetGame() {
-        this.snake = [{ x: 10, y: 10 }];
-        this.direction = 'right';
+        this.snake = [GAME_CONSTANTS.INITIAL_SNAKE_POSITION];
+        this.direction = GAME_CONSTANTS.INITIAL_DIRECTION;
         this.score = 0;
         this.gameOver = false;
         this.generateFood();
+        this.highScore = parseInt(localStorage.getItem(GAME_CONSTANTS.HIGH_SCORE_KEY)) || 0; // Recarrega a maior pontuação
     }
 }
 

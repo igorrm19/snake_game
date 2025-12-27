@@ -134,4 +134,76 @@ body {
 
 ## Como Funciona
 
-Este arquivo CSS define a apresentação visual do jogo, agora com um cabeçalho organizado que exibe a pontuação e o controle de música. Ele usa Flexbox para o cabeçalho e CSS Grid para o tabuleiro do jogo, garantindo que os elementos da interface sejam bem posicionados e estilizados.
+Este arquivo CSS define a apresentação visual do jogo, agora com um cabeçalho organizado que exibe a pontuação e o controle de música. Ele usa Flexbox para o cabeçalho e CSS Grid para o tabuleiro do jogo, garantindo que os elementos da interface sejam bem posicionados e estilizados. As Media Queries garantem que o layout e o tamanho dos elementos se adaptem a diferentes tamanhos de tela, proporcionando uma experiência responsiva.
+
+## Media Queries para Responsividade
+
+### Telas Pequenas (max-width: 600px)
+
+```css
+@media (max-width: 600px) {
+    .game-header {
+        width: 95vw;
+        padding: 5px 0;
+        margin-bottom: 10px;
+    }
+
+    .game-header h1 {
+        font-size: 1.5em;
+    }
+
+    #score-display {
+        font-size: 0.9em;
+    }
+
+    #mute-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    #game-board {
+        width: min(500px, 95vw);
+        height: min(500px, 95vh);
+        border: 3px solid #555;
+    }
+}
+```
+
+-   Ajusta a largura do cabeçalho e do tabuleiro do jogo para ocupar mais espaço em telas pequenas.
+-   Reduz o tamanho da fonte do título, da pontuação e do ícone de mute para se adequar a telas menores.
+-   Diminui a borda do tabuleiro.
+
+### Telas Médias (min-width: 601px e max-width: 1024px)
+
+```css
+@media (min-width: 601px) and (max-width: 1024px) {
+    .game-header {
+        width: 80vw;
+        padding: 8px 0;
+        margin-bottom: 15px;
+    }
+
+    .game-header h1 {
+        font-size: 2em;
+    }
+
+    #score-display {
+        font-size: 1em;
+    }
+
+    #mute-button svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    #game-board {
+        width: min(600px, 85vw);
+        height: min(600px, 85vh);
+        border: 4px solid #555;
+    }
+}
+```
+
+-   Ajusta a largura do cabeçalho e do tabuleiro do jogo para ocupar uma proporção maior da tela em dispositivos de tamanho médio.
+-   Define tamanhos de fonte intermediários para o título, a pontuação e o ícone de mute.
+-   Ajusta a borda do tabuleiro.

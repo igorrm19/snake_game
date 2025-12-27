@@ -2,6 +2,10 @@ export class GameView {
     constructor(gameBoardElement, gridSize) {
         this.gameBoardElement = gameBoardElement;
         this.gridSize = gridSize;
+        this.playButton = document.getElementById('play-button');
+        this.restartButton = document.getElementById('restart-button');
+        this.highScoreDisplay = document.getElementById('high-score-display');
+        this.scoreDisplay = document.getElementById('score-display');
     }
 
     clearBoard() {
@@ -34,13 +38,37 @@ export class GameView {
 
     displayGameOver() {
         alert('Game Over!');
+        this.showRestartButton();
     }
 
-    displayScore(score) {
-        const scoreDisplay = document.getElementById('score-display');
-        if (scoreDisplay) {
-            scoreDisplay.textContent = `Score: ${score}`;
+    displayScore(score, highScore) {
+        if (this.scoreDisplay) {
+            this.scoreDisplay.textContent = `Score: ${score}`;
         }
+        if (this.highScoreDisplay) {
+            this.highScoreDisplay.textContent = `High Score: ${highScore}`;
+        }
+    }
+
+    showPlayButton() {
+        this.playButton.classList.remove('hidden');
+        this.restartButton.classList.add('hidden');
+        this.gameBoardElement.classList.add('hidden');
+    }
+
+    hidePlayButton() {
+        this.playButton.classList.add('hidden');
+        this.gameBoardElement.classList.remove('hidden');
+    }
+
+    showRestartButton() {
+        this.restartButton.classList.remove('hidden');
+        this.gameBoardElement.classList.add('hidden'); // Esconde o tabuleiro após o game over
+    }
+
+    hideRestartButton() {
+        this.restartButton.classList.add('hidden');
+        this.gameBoardElement.classList.remove('hidden');
     }
 }
 

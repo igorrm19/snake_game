@@ -17,7 +17,10 @@ O arquivo `index.html` é o ponto de entrada principal para a aplicação web do
 </head>
 <body>
     <div class="game-header">
-        <h4 id="score-display">Score: 0</h4>
+        <div class="score-info">
+            <h4 id="high-score-display">High Score: 0</h4>
+            <h4 id="score-display">Score: 0</h4>
+        </div>
         <h1>Snake Game</h1>
         <button id="mute-button" style="background-color: transparent; border: none;">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" color="white" fill="currentColor"
@@ -31,8 +34,11 @@ O arquivo `index.html` é o ponto de entrada principal para a aplicação web do
             </svg>
         </button>
     </div>
-    <div id="game-board"></div>
-
+    <div class="game-container">
+        <div id="game-board"></div>
+        <button id="play-button" class="game-button">Play Game</button>
+        <button id="restart-button" class="game-button hidden">Restart Game</button>
+    </div>
     <audio id="background-music" src="./public/mp3/Budapest Art Orchestra - Swan Lake Op20 Act 1  No9.mp3" preload="auto" loop></audio>
     <script type="module" src="src/js/script.js"></script>
 </body>
@@ -61,9 +67,14 @@ Contém metadados sobre o documento, que não são exibidos diretamente na pági
 Contém todo o conteúdo visível da página web.
 
 -   `<div class="game-header">`: Um contêiner flexível para organizar os elementos no topo da página.
-    -   `<h4 id="score-display">Score: 0</h4>`: Exibe a pontuação atual do jogador. O JavaScript irá atualizar o texto deste elemento.
+    -   `<div class="score-info">`: Um contêiner para agrupar as exibições de pontuação.
+        -   `<h4 id="high-score-display">High Score: 0</h4>`: Exibe a maior pontuação do jogador, persistida no `localStorage`.
+        -   `<h4 id="score-display">Score: 0</h4>`: Exibe a pontuação atual do jogador. O JavaScript irá atualizar o texto deste elemento.
     -   `<h1>Snake Game</h1>`: O título principal do jogo.
-    -   `<button id="mute-button">`: Botão para mutar/desmutar a música de fundo, contendo o ícone SVG.
--   `<div id="game-board">`: Este é o elemento principal onde o jogo Snake será renderizado.
+    -   `<button id="mute-button">`: Botão para mutar/desmutar a música de fundo, contendo o ícone SVG e estilizado para ser transparente.
+-   `<div class="game-container">`: Um contêiner para centralizar o tabuleiro do jogo e os botões de controle de jogo.
+    -   `<div id="game-board">`: Este é o elemento principal onde o jogo Snake será renderizado.
+    -   `<button id="play-button" class="game-button">Play Game</button>`: Botão para iniciar o jogo. Visível no início.
+    -   `<button id="restart-button" class="game-button hidden">Restart Game</button>`: Botão para reiniciar o jogo após o Game Over. Inicialmente oculto.
 -   `<audio id="background-music" src="./public/mp3/Budapest Art Orchestra - Swan Lake Op20 Act 1  No9.mp3" preload="auto" loop></audio>`: Elemento de áudio para a música de fundo. `preload="auto"` permite que o navegador decida o pré-carregamento e `loop` garante que a música se repita.
 -   `<script type="module" src="src/js/script.js"></script>`: Inclui o arquivo JavaScript principal que inicializa a lógica do jogo. O atributo `type="module"` é usado para suportar importações e exportações de módulos ES6.
