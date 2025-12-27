@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('../../public/6c479787d54fe73436b82e56ed99885e.gif');
+    background-position: center;
+    background-repeat: repeat;
+    color: #eee;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90vw;
+    width: 625px; /* Mesma largura do game-board */
+    padding: 10px 0;
+    position: absolute;
+    top: 0;
+}
+
+.game-header h1 {
+    margin: 0; /* Remove margem padrão do h1 dentro do header */
+}
+
+#score-display {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+#mute-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+#mute-button svg {
+    fill: white; 
+}
+
+#mute-button:hover svg {
+    fill: #ccc; 
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-rows: repeat(25, 1fr);
+    max-width: 90vw;
+    max-height: 90vh;
+    width: min(625px, 90vw); /* Ajusta a largura com base na viewport */
+    height: min(625px, 90vh); /* Ajusta a altura com base na viewport */
+    background-color: #333;
+    border: 5px solid #555;
+}
+
+.snake {
+    background-color: #0f0;
+}
+
+.food {
+    background-color: #f00;
+}
+
