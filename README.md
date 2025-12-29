@@ -13,6 +13,7 @@
 
 <h2>Regras</h2>
 
+
 <p>O jogo termina quando o serpente colide com as paredes ou com si mesmo.</p>
 
 <h2>Controles</h2>

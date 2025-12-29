@@ -72,7 +72,7 @@ body {
     max-height: 90vh;
     width: min(625px, 90vw);
     height: min(625px, 90vh);
-    background-image: url("/public/grass-tiles-seamless-pixel-retro-260nw-1580846293.webp");
+    background-image: url("../../public/grass-tiles-seamless-pixel-retro-260nw-1580846293.webp");
     background-size: cover;
     border: 5px solid var(--border-color);
 }
