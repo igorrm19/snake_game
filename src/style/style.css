@@ -21,7 +21,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    background-image: url('../../public/6c479787d54fe73436b82e56ed99885e.gif');
+    background-image: url('../../public/76aa24bf1e433a13444c18c5df7b839b.gif');
     background-position: center;
     background-repeat: repeat;
     color: var(--primary-color);
@@ -153,7 +153,7 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     color: white;
-    background: #6225E6;
+    background: #e6a225;
     transition: 1s;
     box-shadow: 6px 6px 0 black;
     transform: skewX(-15deg);
@@ -165,7 +165,7 @@ body {
 
 .cta:hover {
     transition: 0.5s;
-    box-shadow: 10px 10px 0 #FBC638;
+    box-shadow: 10px 10px 0 #38fbba;
 }
 
 .cta span:nth-child(2) {
@@ -219,7 +219,7 @@ path.two {
     }
 
     50% {
-        fill: #FBC638;
+        fill: #58fb38;
     }
 
     100% {

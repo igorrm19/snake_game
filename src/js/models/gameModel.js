@@ -63,12 +63,6 @@ export class GameModel {
     checkCollision() {
         const head = this.snake[0];
 
-        // Wall collision - REMOVED for wrap-around
-        // if (head.x < 1 || head.x > this.gridSize || head.y < 1 || head.y > this.gridSize) {
-        //     this.gameOver = true;
-        // }
-
-        // Self-collision
         for (let i = 1; i < this.snake.length; i++) {
             if (head.x === this.snake[i].x && head.y === this.snake[i].y) {
                 this.gameOver = true;
