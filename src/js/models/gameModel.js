@@ -28,15 +28,19 @@ export class GameModel {
         switch (this.direction) {
             case 'up':
                 head.y--;
+                if (head.y < 1) head.y = this.gridSize;
                 break;
             case 'down':
                 head.y++;
+                if (head.y > this.gridSize) head.y = 1;
                 break;
             case 'left':
                 head.x--;
+                if (head.x < 1) head.x = this.gridSize;
                 break;
             case 'right':
                 head.x++;
+                if (head.x > this.gridSize) head.x = 1;
                 break;
         }
 
@@ -59,10 +63,10 @@ export class GameModel {
     checkCollision() {
         const head = this.snake[0];
 
-        // Wall collision
-        if (head.x < 1 || head.x > this.gridSize || head.y < 1 || head.y > this.gridSize) {
-            this.gameOver = true;
-        }
+        // Wall collision - REMOVED for wrap-around
+        // if (head.x < 1 || head.x > this.gridSize || head.y < 1 || head.y > this.gridSize) {
+        //     this.gameOver = true;
+        // }
 
         // Self-collision
         for (let i = 1; i < this.snake.length; i++) {
