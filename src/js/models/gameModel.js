@@ -12,7 +12,7 @@ export class GameModel {
         this.highScore = parseInt(localStorage.getItem(GAME_CONSTANTS.HIGH_SCORE_KEY)) || 0;
         this.generateFood();
     }
-
+    // ok
     generateFood() {
         let newFoodX, newFoodY;
         do {
