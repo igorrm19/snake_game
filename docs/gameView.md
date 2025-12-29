@@ -12,6 +12,10 @@ A classe `GameView` é responsável por renderizar o estado atual do jogo Snake 
 
 -   **`gameBoardElement`**: O elemento HTML (geralmente um `div`) que serve como o contêiner principal para o tabuleiro do jogo.
 -   **`gridSize`**: O tamanho da grade do jogo (por exemplo, 20x20). Usado para calcular a posição dos elementos na grade CSS.
+-   **`playButton`**: Referência ao botão HTML de "Play Game".
+-   **`restartButton`**: Referência ao botão HTML de "Restart Game".
+-   **`highScoreDisplay`**: Referência ao elemento HTML que exibe a maior pontuação.
+-   **`scoreDisplay`**: Referência ao elemento HTML que exibe a pontuação atual.
 
 ### Métodos
 
@@ -42,8 +46,26 @@ Método principal de renderização que atualiza a exibição do jogo.
 
 #### `displayGameOver()`
 
-Exibe uma mensagem para o usuário quando o jogo termina, geralmente um alerta.
+Mostra o botão de "Restart Game" e esconde o tabuleiro do jogo, indicando o fim da partida.
 
-#### `displayScore(score)`
+#### `displayScore(score, highScore)`
 
-Exibe a pontuação atual do jogador. Atualmente, imprime a pontuação no console, mas pode ser expandido para atualizar um elemento de pontuação na UI.
+Exibe a pontuação atual e a maior pontuação nos elementos HTML correspondentes.
+-   **`score`**: A pontuação atual do jogo.
+-   **`highScore`**: A maior pontuação alcançada.
+
+#### `showPlayButton()`
+
+Mostra o botão de "Play Game" e esconde o botão de "Restart Game" e o tabuleiro do jogo.
+
+#### `hidePlayButton()`
+
+Esconde o botão de "Play Game" e mostra o tabuleiro do jogo.
+
+#### `showRestartButton()`
+
+Mostra o botão de "Restart Game" e esconde o tabuleiro do jogo.
+
+#### `hideRestartButton()`
+
+Esconde o botão de "Restart Game" e mostra o tabuleiro do jogo.

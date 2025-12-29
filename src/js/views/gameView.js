@@ -2,8 +2,8 @@ export class GameView {
     constructor(gameBoardElement, gridSize) {
         this.gameBoardElement = gameBoardElement;
         this.gridSize = gridSize;
-        this.playButton = document.getElementById('play-button');
-        this.restartButton = document.getElementById('restart-button');
+        this.playRestartButton = document.getElementById('play-restart-button');
+        this.playRestartButtonText = this.playRestartButton.querySelector('.cta span:first-child');
         this.highScoreDisplay = document.getElementById('high-score-display');
         this.scoreDisplay = document.getElementById('score-display');
     }
@@ -37,8 +37,9 @@ export class GameView {
     }
 
     displayGameOver() {
-        alert('Game Over!');
-        this.showRestartButton();
+        this.setPlayRestartButtonText('Restart');
+        this.showPlayRestartButton();
+        this.hideGameBoard();
     }
 
     displayScore(score, highScore) {
@@ -50,25 +51,24 @@ export class GameView {
         }
     }
 
-    showPlayButton() {
-        this.playButton.classList.remove('hidden');
-        this.restartButton.classList.add('hidden');
+    setPlayRestartButtonText(text) {
+        this.playRestartButtonText.textContent = text;
+    }
+
+    showPlayRestartButton() {
+        this.playRestartButton.classList.remove('hidden');
+    }
+
+    hidePlayRestartButton() {
+        this.playRestartButton.classList.add('hidden');
+    }
+
+    showGameBoard() {
+        this.gameBoardElement.classList.remove('hidden');
+    }
+
+    hideGameBoard() {
         this.gameBoardElement.classList.add('hidden');
-    }
-
-    hidePlayButton() {
-        this.playButton.classList.add('hidden');
-        this.gameBoardElement.classList.remove('hidden');
-    }
-
-    showRestartButton() {
-        this.restartButton.classList.remove('hidden');
-        this.gameBoardElement.classList.add('hidden'); // Esconde o tabuleiro após o game over
-    }
-
-    hideRestartButton() {
-        this.restartButton.classList.add('hidden');
-        this.gameBoardElement.classList.remove('hidden');
     }
 }
 

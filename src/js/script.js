@@ -11,17 +11,11 @@ const model = new GameModel(gridSize);
 const view = new GameView(gameBoard, gridSize);
 const controller = new GameController(model, view);
 
-const playButton = document.getElementById('play-button');
-const restartButton = document.getElementById('restart-button');
+const playRestartButton = document.getElementById('play-restart-button');
 
-playButton.addEventListener('click', () => {
-    controller.initGame();
-    musicPlayer.play(); // Inicia a música ao iniciar o jogo
-});
-
-restartButton.addEventListener('click', () => {
-    controller.resetGame();
-    musicPlayer.play(); // Reinicia a música ao reiniciar o jogo
+playRestartButton.addEventListener('click', () => {
+    controller.handlePlayRestart();
+    musicPlayer.play();
 });
 
 const musicPlayer = new MusicPlayer('background-music');
@@ -29,14 +23,11 @@ const muteButton = document.getElementById('mute-button');
 
 muteButton.addEventListener('click', () => {
     musicPlayer.toggleMute();
-    // SVG color is controlled via CSS based on the mute state if needed, or remains as defined in SVG
+    
 });
 
-// Attempt to play music automatically, handle potential errors
 window.addEventListener('load', () => {
-    // A música agora é iniciada via botão de play/restart
-    // musicPlayer.play(); 
+    
+    
 });
 
-// Não inicia o jogo automaticamente, espera pelo botão de play
-// controller.startGame();

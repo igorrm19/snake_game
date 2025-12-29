@@ -126,11 +126,17 @@ body {
 
 ```css
 .food {
-    background-color: #f00;
+    background-image: url('../../public/qup1a0fnj2p51.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 ```
 
--   `background-color: #f00;`: Define a cor vermelha para o item de comida.
+-   `background-image`: Define o GIF `qup1a0fnj2p51.gif` como a imagem de fundo para o item de comida.
+-   `background-size: cover;`: Redimensiona a imagem para cobrir toda a área do elemento.
+-   `background-position: center;`: Centraliza a imagem de fundo.
+-   `background-repeat: no-repeat;`: Impede que a imagem se repita.
 
 ## Como Funciona
 

@@ -5,17 +5,30 @@ export class GameController {
         this.gameInterval = null;
         document.addEventListener('keydown', this.handleKeyPress.bind(this));
 
-        // Inicializa o jogo mostrando o botão de play
-        this.view.showPlayButton();
+        
+        this.view.setPlayRestartButtonText('Play');
+        this.view.showPlayRestartButton();
+        this.view.hideGameBoard();
         this.view.displayScore(this.model.score, this.model.highScore);
     }
 
+    handlePlayRestart() {
+        if (this.model.gameOver) {
+            clearInterval(this.gameInterval); 
+            this.model.gameOver = false; 
+            this.model.resetGame(); 
+            this.view.clearBoard(); 
+            this.view.setPlayRestartButtonText('Play'); 
+            this.initGame(); 
+        } else {
+            this.initGame(); 
+        }
+    }
+
     initGame() {
-        this.view.hidePlayButton();
-        this.view.hideRestartButton();
-        this.model.resetGame();
-        this.view.clearBoard();
-        this.view.render(this.model.snake, this.model.food); // Renderiza o estado inicial
+        this.view.hidePlayRestartButton();
+        this.view.showGameBoard();
+        this.view.render(this.model.snake, this.model.food);
         this.startGameLoop();
     }
 
@@ -24,8 +37,10 @@ export class GameController {
             this.model.moveSnake();
             if (this.model.gameOver) {
                 clearInterval(this.gameInterval);
-                this.view.displayGameOver();
-                this.view.displayScore(this.model.score, this.model.highScore); // Atualiza a pontuação final e a maior pontuação
+                this.view.setPlayRestartButtonText('Restart');
+                this.view.showPlayRestartButton();
+                this.view.hideGameBoard();
+                this.view.displayScore(this.model.score, this.model.highScore);
             } else {
                 this.view.render(this.model.snake, this.model.food);
                 this.view.displayScore(this.model.score, this.model.highScore);
@@ -37,8 +52,4 @@ export class GameController {
         this.model.setDirection(event.key);
     }
 
-    // Este método é agora mais um wrapper para iniciar um novo jogo
-    resetGame() {
-        this.initGame();
-    }
 }
