@@ -16,9 +16,7 @@
 
 <p>O jogo termina quando o serpente colide com as paredes ou com si mesmo.</p>
 
-<h2>Controles</h2>
 
-<p>As teclas de controle são as setas do teclado para mover o serpente.</p>
 
 
 <img src="/public/screen/Screenshot from 2025-12-29 09-31-40.png" alt="">
