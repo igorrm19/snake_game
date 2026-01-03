@@ -10,6 +10,7 @@ export class GameModel {
         this.gameOver = false;
         this.score = 0;
         this.highScore = parseInt(localStorage.getItem(GAME_CONSTANTS.HIGH_SCORE_KEY)) || 0;
+        this.lastMovedDirection = this.direction;
         this.generateFood();
     }
     // ok
@@ -23,6 +24,7 @@ export class GameModel {
     }
 
     moveSnake() {
+        this.lastMovedDirection = this.direction;
         const head = { ...this.snake[0] };
 
         switch (this.direction) {
@@ -76,16 +78,16 @@ export class GameModel {
 
         switch (newDirection) {
             case 'ArrowUp':
-                if (this.direction !== 'down') this.direction = 'up';
+                if (this.lastMovedDirection !== 'down') this.direction = 'up';
                 break;
             case 'ArrowDown':
-                if (this.direction !== 'up') this.direction = 'down';
+                if (this.lastMovedDirection !== 'up') this.direction = 'down';
                 break;
             case 'ArrowLeft':
-                if (this.direction !== 'right') this.direction = 'left';
+                if (this.lastMovedDirection !== 'right') this.direction = 'left';
                 break;
             case 'ArrowRight':
-                if (this.direction !== 'left') this.direction = 'right';
+                if (this.lastMovedDirection !== 'left') this.direction = 'right';
                 break;
         }
     }
@@ -93,6 +95,7 @@ export class GameModel {
     resetGame() {
         this.snake = [GAME_CONSTANTS.INITIAL_SNAKE_POSITION];
         this.direction = GAME_CONSTANTS.INITIAL_DIRECTION;
+        this.lastMovedDirection = this.direction;
         this.score = 0;
         this.gameOver = false;
         this.generateFood();
