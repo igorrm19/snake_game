@@ -17,6 +17,7 @@ export class GameView {
             const snakeElement = document.createElement('div');
             snakeElement.style.gridRowStart = segment.y;
             snakeElement.style.gridColumnStart = segment.x;
+            snakeElement.style.backgroundColor = 'var(--primary-color)';
             snakeElement.classList.add('snake');
             this.gameBoardElement.appendChild(snakeElement);
         });
@@ -26,6 +27,7 @@ export class GameView {
         const foodElement = document.createElement('div');
         foodElement.style.gridRowStart = food.y;
         foodElement.style.gridColumnStart = food.x;
+        foodElement.style.backgroundColor = 'var(--primary-color)';
         foodElement.classList.add('food');
         this.gameBoardElement.appendChild(foodElement);
     }
